@@ -1,6 +1,7 @@
 # System Security (`system-security`)
 
 Master:
+[![Build Status](https://semaphoreci.com/api/v1/projects/e87d4eca-2b9f-44b0-9d6a-5a4c33e9f41f/618519/badge.svg)](https://semaphoreci.com/antarctica/ansible-system-security)
 
 Develop:
 [![Build Status](https://semaphoreci.com/api/v1/projects/e87d4eca-2b9f-44b0-9d6a-5a4c33e9f41f/618476/badge.svg)](https://semaphoreci.com/antarctica/ansible-system-security)

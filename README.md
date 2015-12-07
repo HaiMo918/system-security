@@ -35,8 +35,6 @@ each role's `meta/main.yml` and `README.md` file.
 
 Note: BAS projects **SHOULD** always pin role versions, except in exceptional circumstances.
 
-[prelude](https://galaxy.ansible.com/detail#/role/5959), which includes
-
 ### Avoiding dependencies
 
 All dependencies of this role are tagged as *BARC_ROLE_DEPENDENCY*. Skipping this tag when executing a playbook that
@@ -76,7 +74,7 @@ For example, a playbook such:
 ```yaml
 ---
 
-- name: setup web-server
+- name: setup web-servers
   hosts: all
   become: yes
   vars: []
@@ -95,19 +93,19 @@ Might become:
     - BARC.LEPP
 ```
 
-Note: The roles above are necessarily real BARC roles.
+Note: The roles above are not necessarily real BARC roles.
 
 ### Typical playbook
 
 ```yaml
 ---
 
-- name: setup SSH daemon
+- name: configure system security
   hosts: all
   become: yes
   vars: []
   roles:
-    - BARC.system-ssh
+    - BARC.system-security
 ```
 
 ### Tags
@@ -115,7 +113,7 @@ Note: The roles above are necessarily real BARC roles.
 BARC roles use standardised tags to control which aspects of an environment are changed by roles. Where relevant, tags
 will be applied at a role, or task(s) level, as indicated below.
 
-This role uses the following tags, for all tasks:
+This role uses the following tags:
 
 * None
 

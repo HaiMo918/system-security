@@ -100,7 +100,7 @@ If the project and branch already exists, check the settings above are correct.
 ### Usage
 
 Pushing to the `develop` or *master* (when ready) branch will automatically trigger SemaphoreCI, test results are 
-available [here](https://semaphoreci.com/antarctica/ansible-apache).
+available [here](https://semaphoreci.com/antarctica/ansible-system-security).
 
 ## Manual tests
 

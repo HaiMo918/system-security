@@ -3,4 +3,4 @@
 
 # BARC specific variables
 system_security_barc_role_name: system-security
-system_security_barc_role_version: 0.1.0
+system_security_barc_role_version: 0.2.0

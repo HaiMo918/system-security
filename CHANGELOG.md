@@ -5,6 +5,10 @@ This role adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased][unreleased]
 
+### Added
+
+* Missing 'hostname' role for use when testing
+
 ### Fixed
 
 * README formatting and typos

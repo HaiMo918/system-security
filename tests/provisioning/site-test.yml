@@ -11,4 +11,5 @@
   become: yes
   roles:
     - ../../../system-security
-  tasks: []
+  tasks:
+    - include: ../tasks/main.yml

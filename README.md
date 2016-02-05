@@ -1,10 +1,11 @@
 # System Security (`system-security`)
 
 Master:
-[![Build Status](https://semaphoreci.com/api/v1/projects/e87d4eca-2b9f-44b0-9d6a-5a4c33e9f41f/618519/badge.svg)](https://semaphoreci.com/antarctica/ansible-system-security)
+[![Build Status](https://semaphoreci.com/api/v1/bas-ansible-roles-collection/system-security/branches/master/badge.svg)](https://semaphoreci.com/bas-ansible-roles-collection/system-security)
 
 Develop:
-[![Build Status](https://semaphoreci.com/api/v1/projects/e87d4eca-2b9f-44b0-9d6a-5a4c33e9f41f/618476/badge.svg)](https://semaphoreci.com/antarctica/ansible-system-security)
+[![Build Status](https://semaphoreci.com/api/v1/bas-ansible-roles-collection/system-security/branches/develop/badge.svg)](https://semaphoreci.com/bas-ansible-roles-collection/system-security)
+
 
 Meta role for including roles related to system security
 
@@ -21,7 +22,8 @@ See `tests/README.md` for more information.
 
 ## Dependencies
 
-* [**BARC.system-ssh**](https://galaxy.ansible.com/detail#/role/6284) - minimum version: *0.1.0*
+* [**bas-ansible-roles-collection.system-ssh**](https://galaxy.ansible.com/bas-ansible-roles-collection/system-ssh/)
+  * Minimum version: *0.2.0*
 
 ### Pinning dependencies
 
@@ -34,8 +36,6 @@ and their version. This does require you to resolve dependencies for roles manua
 each role's `meta/main.yml` and `README.md` file.
 
 Note: BAS projects **SHOULD** always pin role versions, except in exceptional circumstances.
-
-[prelude](https://galaxy.ansible.com/detail#/role/5959), which includes
 
 ### Avoiding dependencies
 
@@ -63,6 +63,20 @@ Note: Using this role without its dependencies is **NOT** supported, and may lea
 
 ## Usage
 
+### BARC manifest
+
+By default, BARC roles will record that they have been applied to a system. This is recorded using a set of 
+[Ansible local facts](http://docs.ansible.com/ansible/playbooks_variables.html#local-facts-facts-d), specifically:
+
+* `ansible_local.barc-system-security.general.role_applied` - to indicate that this role has been applied
+* `ansible_local.barc-system-security.general.role_version` - to indicate the applied version of this role
+
+Note: You **SHOULD** use this feature to determine whether this role has been applied to a system.
+
+If you do not want these facts to be set by this role, you **MUST** skip the **BARC_SET_MANIFEST** tag. No support is 
+offered in this case, as other roles or use-cases may rely on this feature. Therefore you **SHOULD NOT** disable this
+feature.
+
 ### What are meta-roles?
 
 Meta-roles are a concept with the BARC for roles which group other roles together through role dependencies.
@@ -76,38 +90,38 @@ For example, a playbook such:
 ```yaml
 ---
 
-- name: setup web-server
+- name: setup web-servers
   hosts: all
   become: yes
   vars: []
   roles:
-    - BARC.nginx
-    - BARC.php
-    - BARC.php-fpm
-    - BARC.php-pgsql
-    - BARC.postgresql
+    - bas-ansible-roles-collection.nginx
+    - bas-ansible-roles-collection.php
+    - bas-ansible-roles-collection.php-fpm
+    - bas-ansible-roles-collection.php-pgsql
+    - bas-ansible-roles-collection.postgresql
 ```
 
 Might become:
 
 ```yaml
   roles:
-    - BARC.LEPP
+    - bas-ansible-roles-collection.LEPP
 ```
 
-Note: The roles above are necessarily real BARC roles.
+Note: The roles above are not necessarily real BARC roles.
 
 ### Typical playbook
 
 ```yaml
 ---
 
-- name: setup SSH daemon
+- name: configure system security
   hosts: all
   become: yes
   vars: []
   roles:
-    - BARC.system-ssh
+    - bas-ansible-roles-collection.system-security
 ```
 
 ### Tags
@@ -115,20 +129,32 @@ Note: The roles above are necessarily real BARC roles.
 BARC roles use standardised tags to control which aspects of an environment are changed by roles. Where relevant, tags
 will be applied at a role, or task(s) level, as indicated below.
 
-This role uses the following tags, for all tasks:
+This role uses the following tags:
 
-* None
+* [**BARC_SET_MANIFEST**](https://antarctica.hackpad.com/BARC-Standardised-Tags-AviQxxiBa3y#:h=BARC_SET_MANIFEST)
 
 ### Variables
 
-* None
+#### *system_security_barc_role_name*
+
+* **MUST NOT** be specified
+* Specifies the name of this role within the BAS Ansible Roles Collection (BARC) used for setting local facts
+* See the *BARC roles manifest* section for more information
+* Example: system-security
+
+#### *system_security_barc_role_version*
+
+* **MUST NOT** be specified
+* Specifies the name of this role within the BAS Ansible Roles Collection (BARC) used for setting local facts
+* See the *BARC roles manifest* section for more information
+* Example: 2.0.0
 
 ## Developing
 
 ### Issue tracking
 
 Issues, bugs, improvements, questions, suggestions and other tasks related to this package are managed through the 
-[BAS Ansible Role Collection](https://jira.ceh.ac.uk/projects/BARC) (BARC) project on Jira.
+[BAS Ansible Roles Collection](https://jira.ceh.ac.uk/projects/BARC) (BARC) project on Jira.
 
 This service is currently only available to BAS or NERC staff, although external collaborators can be added on request.
 See our contributing policy for more information.
@@ -142,7 +168,7 @@ All changes should be committed, via pull request, to the canonical repository, 
 A mirror of this repository is maintained on GitHub. Changes are automatically pushed from the canonical repository to
 this mirror, in a one-way process.
 
-`git@github.com:antarctica/ansible-system-security.git`
+`git@github.com:bas-ansible-roles-collection/system-security.git`
 
 Note: The canonical repository is only accessible within the NERC firewall. External collaborators, please make pull 
 requests against the mirrored GitHub repository and these will be merged as appropriate.
@@ -160,6 +186,11 @@ workflow is used to manage the development of this project:
 required and merge into master with a tagged, semantic version (e.g. v1.2.3)
 * After each release, the master branch should be merged with develop to restart the process
 * High impact bugs can be addressed in hotfix branches, created from and merged into master (then develop) directly
+
+### Release procedure
+
+See [here](https://antarctica.hackpad.com/BARC-Overview-and-Policies-SzcHzHvitkt#:h=Release-procedures) for general 
+release procedures for BARC roles.
 
 ## Licence
 

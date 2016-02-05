@@ -13,10 +13,7 @@
 # Unlike projects, role dependencies are not pinned to ensure roles always work with the latest role versions.
 
 - src: BARC.system-users
-  version: v0.2.0
-  version: v0.1.1
 - src: BARC.system-ssh
-  version: v0.1.0
 #- src: bas-ansible-roles-collection.system-hostname
 
 # Note: The 'bas-ansible-roles-collection.system-hostname' role is currently unavailable through Ansible Galaxy.

@@ -13,6 +13,8 @@ This role adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
 * README formatting and typos
 * Minor corrections to other files for formatting and typos
+* Testing role dependencies should always use latest versions
+
 
 ## 0.1.0 - 30/11/2015
 

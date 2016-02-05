@@ -61,6 +61,20 @@ Note: Using this role without its dependencies is **NOT** supported, and may lea
 
 ## Usage
 
+### BARC manifest
+
+By default, BARC roles will record that they have been applied to a system. This is recorded using a set of 
+[Ansible local facts](http://docs.ansible.com/ansible/playbooks_variables.html#local-facts-facts-d), specifically:
+
+* `ansible_local.barc-system-security.general.role_applied` - to indicate that this role has been applied
+* `ansible_local.barc-system-security.general.role_version` - to indicate the applied version of this role
+
+Note: You **SHOULD** use this feature to determine whether this role has been applied to a system.
+
+If you do not want these facts to be set by this role, you **MUST** skip the **BARC_SET_MANIFEST** tag. No support is 
+offered in this case, as other roles or use-cases may rely on this feature. Therefore you **SHOULD NOT** disable this
+feature.
+
 ### What are meta-roles?
 
 Meta-roles are a concept with the BARC for roles which group other roles together through role dependencies.
@@ -115,11 +129,23 @@ will be applied at a role, or task(s) level, as indicated below.
 
 This role uses the following tags:
 
-* None
+* [**BARC_SET_MANIFEST**](https://antarctica.hackpad.com/BARC-Standardised-Tags-AviQxxiBa3y#:h=BARC_SET_MANIFEST)
 
 ### Variables
 
-* None
+#### *system_security_barc_role_name*
+
+* **MUST NOT** be specified
+* Specifies the name of this role within the BAS Ansible Roles Collection (BARC) used for setting local facts
+* See the *BARC roles manifest* section for more information
+* Example: system-security
+
+#### *system_security_barc_role_version*
+
+* **MUST NOT** be specified
+* Specifies the name of this role within the BAS Ansible Roles Collection (BARC) used for setting local facts
+* See the *BARC roles manifest* section for more information
+* Example: 2.0.0
 
 ## Developing
 
@@ -158,6 +184,11 @@ workflow is used to manage the development of this project:
 required and merge into master with a tagged, semantic version (e.g. v1.2.3)
 * After each release, the master branch should be merged with develop to restart the process
 * High impact bugs can be addressed in hotfix branches, created from and merged into master (then develop) directly
+
+### Release procedure
+
+See [here](https://antarctica.hackpad.com/BARC-Overview-and-Policies-SzcHzHvitkt#:h=Release-procedures) for general 
+release procedures for BARC roles.
 
 ## Licence
 

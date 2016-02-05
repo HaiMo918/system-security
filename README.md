@@ -1,10 +1,11 @@
 # System Security (`system-security`)
 
 Master:
-[![Build Status](https://semaphoreci.com/api/v1/projects/e87d4eca-2b9f-44b0-9d6a-5a4c33e9f41f/618519/badge.svg)](https://semaphoreci.com/antarctica/ansible-system-security)
+[![Build Status](https://semaphoreci.com/api/v1/bas-ansible-roles-collection/system-security/branches/master/badge.svg)](https://semaphoreci.com/bas-ansible-roles-collection/system-security)
 
 Develop:
-[![Build Status](https://semaphoreci.com/api/v1/projects/e87d4eca-2b9f-44b0-9d6a-5a4c33e9f41f/618476/badge.svg)](https://semaphoreci.com/antarctica/ansible-system-security)
+[![Build Status](https://semaphoreci.com/api/v1/bas-ansible-roles-collection/system-security/branches/develop/badge.svg)](https://semaphoreci.com/bas-ansible-roles-collection/system-security)
+
 
 Meta role for including roles related to system security
 
@@ -21,7 +22,8 @@ See `tests/README.md` for more information.
 
 ## Dependencies
 
-* [**BARC.system-ssh**](https://galaxy.ansible.com/detail#/role/6284) - minimum version: *0.1.0*
+* [**bas-ansible-roles-collection.system-ssh**](https://galaxy.ansible.com/bas-ansible-roles-collection/system-ssh/)
+  * Minimum version: *0.2.0*
 
 ### Pinning dependencies
 
@@ -93,18 +95,18 @@ For example, a playbook such:
   become: yes
   vars: []
   roles:
-    - BARC.nginx
-    - BARC.php
-    - BARC.php-fpm
-    - BARC.php-pgsql
-    - BARC.postgresql
+    - bas-ansible-roles-collection.nginx
+    - bas-ansible-roles-collection.php
+    - bas-ansible-roles-collection.php-fpm
+    - bas-ansible-roles-collection.php-pgsql
+    - bas-ansible-roles-collection.postgresql
 ```
 
 Might become:
 
 ```yaml
   roles:
-    - BARC.LEPP
+    - bas-ansible-roles-collection.LEPP
 ```
 
 Note: The roles above are not necessarily real BARC roles.
@@ -119,7 +121,7 @@ Note: The roles above are not necessarily real BARC roles.
   become: yes
   vars: []
   roles:
-    - BARC.system-security
+    - bas-ansible-roles-collection.system-security
 ```
 
 ### Tags
@@ -152,7 +154,7 @@ This role uses the following tags:
 ### Issue tracking
 
 Issues, bugs, improvements, questions, suggestions and other tasks related to this package are managed through the 
-[BAS Ansible Role Collection](https://jira.ceh.ac.uk/projects/BARC) (BARC) project on Jira.
+[BAS Ansible Roles Collection](https://jira.ceh.ac.uk/projects/BARC) (BARC) project on Jira.
 
 This service is currently only available to BAS or NERC staff, although external collaborators can be added on request.
 See our contributing policy for more information.
@@ -166,7 +168,7 @@ All changes should be committed, via pull request, to the canonical repository, 
 A mirror of this repository is maintained on GitHub. Changes are automatically pushed from the canonical repository to
 this mirror, in a one-way process.
 
-`git@github.com:antarctica/ansible-system-security.git`
+`git@github.com:bas-ansible-roles-collection/system-security.git`
 
 Note: The canonical repository is only accessible within the NERC firewall. External collaborators, please make pull 
 requests against the mirrored GitHub repository and these will be merged as appropriate.
